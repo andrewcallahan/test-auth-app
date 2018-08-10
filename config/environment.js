@@ -6,6 +6,25 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+
+    'ember-simple-auth': {
+      authenticationRoute: 'login',
+      auth0: {
+        clientID: '1234',
+        domain: 'my-company.auth0.com',
+        logoutReturnToURL: '/logout',
+        enableImpersonation: false
+      }
+    },
+    
+    'contentSecurityPolicy': {
+      'font-src': "'self' data: https://*.auth0.com",
+      'style-src': "'self' 'unsafe-inline'",
+      'script-src': "'self' 'unsafe-eval' https://*.auth0.com",
+      'img-src': '*.gravatar.com *.wp.com data:',
+      'connect-src': "'self' http://localhost:* https://your-app-domain.auth0.com"
+    },
+
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
